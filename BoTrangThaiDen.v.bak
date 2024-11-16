@@ -1,0 +1,33 @@
+// B? hi?n th? dèn giao thông: Ði?u khi?n dèn d?, vàng, xanh d?a trên tr?ng thái
+module TrangThaiDen(
+    input [1:0] state, // Tr?ng thái dèn giao thông
+    output reg red, // Ð?u ra: Ðèn d?
+    output reg yellow, // Ð?u ra: Ðèn vàng
+    output reg green // Ð?u ra: Ðèn xanh
+);
+    always @(*) begin
+        // Gán tr?ng thái cho dèn giao thông
+        case (state)
+            2'b00: begin // Ðèn d?
+                red = 1;
+                yellow = 0;
+                green = 0;
+            end
+            2'b01: begin // Ðèn vàng
+                red = 0;
+                yellow = 1;
+                green = 0;
+            end
+            2'b10: begin // Ðèn xanh
+                red = 0;
+                yellow = 0;
+                green = 1;
+            end
+            default: begin // Tru?ng h?p m?c d?nh: T?t h?t các dèn
+                red = 0;
+                yellow = 0;
+                green = 0;
+            end
+        endcase
+    end
+endmodule

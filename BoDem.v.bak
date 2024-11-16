@@ -1,0 +1,39 @@
+// B? d?m: Qu?n lu tr?ng thái dèn giao thông và th?i gian d?m ngu?c cho t?ng màu dèn.
+module Dem(
+    input clk, // Ğ?u vào: xung nh?p ch?m t? b? chia t?n
+    output reg [1:0] state, // Tr?ng thái dèn giao thông: 00 - d?, 10 - xanh, 01 - vàng
+    output reg [5:0] time_left // Th?i gian d?m ngu?c cho màu dèn hi?n t?i
+);
+    reg [5:0] counter; // Bi?n d?m th?i gian cho t?ng tr?ng thái dèn
+
+    // Kh?i t?o ban d?u: Ğèn d? sáng và th?i gian d?m là 60 giây
+    initial begin
+        state = 2'b00; // Tr?ng thái ban d?u: dèn d?
+        counter = 60; // Th?i gian d?m ban d?u: 60 giây
+        time_left = counter; // Gán th?i gian c?n l?i cho b? hi?n th?
+    end
+
+    always @(posedge clk) begin
+        if (counter > 0) begin
+            counter <= counter - 1; // Gi?m th?i gian d?m ngu?c
+            time_left <= counter; // C?p nh?t th?i gian c?n l?i
+        end else begin
+            // Khi h?t th?i gian, chuy?n sang tr?ng thái dèn ti?p theo
+            case (state)
+                2'b00: begin // N?u dang là dèn d?
+                    state <= 2'b10; // Chuy?n sang dèn xanh
+                    counter <= 45; // Th?i gian dèn xanh: 45 giây
+                end
+                2'b10: begin // N?u dang là dèn xanh
+                    state <= 2'b01; // Chuy?n sang dèn vàng
+                    counter <= 5; // Th?i gian dèn vàng: 5 giây
+                end
+                2'b01: begin // N?u dang là dèn vàng
+                    state <= 2'b00; // Quay l?i dèn d?
+                    counter <= 60; // Th?i gian dèn d?: 60 giây
+                end
+            endcase
+            time_left <= counter; // C?p nh?t th?i gian c?n l?i
+        end
+    end
+endmodule

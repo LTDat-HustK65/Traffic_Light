@@ -1,0 +1,42 @@
+// Module chính: K?t n?i t?t c? các thành ph?n d? t?o ra h? th?ng dèn giao thông hoàn ch?nh
+module TrafficLight(
+    input clk, // Ð?u vào: xung nh?p chính
+    input reset, // Ð?u vào: tín hi?u reset
+    output red, // Ð?u ra: dèn d?
+    output yellow, // Ð?u ra: dèn vàng
+    output green, // Ð?u ra: dèn xanh
+    output [7:0] led0, // LED 7 do?n hi?n th? hàng ch?c
+    output [7:0] led1 // LED 7 do?n hi?n th? hàng don v?
+);
+    wire slow_clk; // Tín hi?u xung nh?p ch?m
+    wire [1:0] state; // Tr?ng thái dèn giao thông
+    wire [5:0] time_left; // Th?i gian còn l?i
+
+    // T?o b? chia t?n
+    ChiaTan U1_chia_tan(
+        .clk(clk),
+        .slow_clk(slow_clk)
+    );
+
+    // T?o b? d?m cho dèn giao thông
+    DemVaChuyenDen U2_dem_nguoc_va_chuyen_den(
+        .clk(slow_clk),
+        .state(state),
+        .time_left(time_left)
+    );
+
+    // T?o b? hi?n th? dèn giao thông
+    HienThiDen U3_hien_thi_den(
+        .state(state),
+        .red(red),
+        .yellow(yellow),
+        .green(green)
+    );
+
+    // T?o b? hi?n th? s? d?m b?ng LED 7 do?n
+    HienThiSo U4_hien_thi_so(
+        .num(time_left),
+        .led0(led0),
+        .led1(led1)
+    );
+endmodule

@@ -1,0 +1,44 @@
+// B? hi?n th? s? d?m b?ng LED 7 do?n: Hi?n th? th?i gian d?m ngu?c
+module HienThiSo(
+    input [5:0] num, // Ð?u vào: th?i gian c?n l?i
+    output reg [7:0] led0, // LED 7 do?n hi?n th? hàng ch?c
+    output reg [7:0] led1 // LED 7 do?n hi?n th? hàng don v?
+);
+    reg [3:0] tens; // Ch? s? hàng ch?c
+    reg [3:0] units; // Ch? s? hàng don v?
+
+    always @* begin
+        tens = num / 10; // Tính ch? s? hàng ch?c
+        units = num % 10; // Tính ch? s? hàng don v?
+
+        // Hi?n th? ch? s? hàng ch?c trên LED 7 do?n
+        case (tens)
+            0: led0 = 8'b0000_0001; // Hi?n th? s? 0
+            1: led0 = 8'b0100_1111; // Hi?n th? s? 1
+            2: led0 = 8'b0001_0010; // Hi?n th? s? 2
+            3: led0 = 8'b0000_0110; // Hi?n th? s? 3
+            4: led0 = 8'b0100_1100; // Hi?n th? s? 4
+            5: led0 = 8'b0010_0100; // Hi?n th? s? 5
+            6: led0 = 8'b0010_0000; // Hi?n th? s? 6
+            7: led0 = 8'b0000_1111; // Hi?n th? s? 7
+            8: led0 = 8'b0000_0000; // Hi?n th? s? 8
+            9: led0 = 8'b0000_0100; // Hi?n th? s? 9
+            default: led0 = 8'b1111_1111; // T?t LED (tru?ng h?p không h?p l?)
+        endcase
+
+        // Hi?n th? ch? s? hàng don v? trên LED 7 do?n
+        case (units)
+            0: led1 = 8'b0000_0001; // Hi?n th? s? 0
+            1: led1 = 8'b0100_1111; // Hi?n th? s? 1
+            2: led1 = 8'b0001_0010; // Hi?n th? s? 2
+            3: led1 = 8'b0000_0110; // Hi?n th? s? 3
+            4: led1 = 8'b0100_1100; // Hi?n th? s? 4
+            5: led1 = 8'b0010_0100; // Hi?n th? s? 5
+            6: led1 = 8'b0010_0000; // Hi?n th? s? 6
+            7: led1 = 8'b0000_1111; // Hi?n th? s? 7
+            8: led1 = 8'b0000_0000; // Hi?n th? s? 8
+            9: led1 = 8'b0000_0100; // Hi?n th? s? 9
+            default: led1 = 8'b1111_1111; // T?t LED (tru?ng h?p không h?p l?)
+        endcase
+    end
+endmodule

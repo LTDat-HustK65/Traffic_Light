@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="TrafficLight">
+		<CBX_INST_ENTRY INSTANCE_NAME="|TrafficLight|HienThiSo:U4_hien_thi_so|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_1em.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|TrafficLight|HienThiSo:U4_hien_thi_so|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_46m.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

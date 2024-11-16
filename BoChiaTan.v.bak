@@ -1,0 +1,18 @@
+// B? chia t?n: Chia t?n s? t? xung nh?p chính (xung nh?p nhanh) thành xung nh?p ch?m hon d? di?u khi?n dèn giao thông.
+module ChiaTan(
+    input clk, // Ð?u vào: xung nh?p chính
+    output reg slow_clk // Ð?u ra: xung nh?p ch?m
+);
+    reg [25:0] counter = 0; // Bi?n d?m d? gi?m t?n s? xung nh?p
+
+    always @(posedge clk) begin
+    counter <= counter + 1; // Tang giá tr? bi?n d?m
+    if (counter == 0) begin
+        slow_clk <= ~slow_clk; // Ð?o tr?ng thái xung ch?m khi bi?n d?m tràn
+    end else begin
+        slow_clk <= slow_clk; // Gi? nguyên tr?ng thái xung ch?m
+    end
+    // ca doan if... else... tren co the viet ngan gon trong 1 cau lenh
+    // slow_clk <= (counter == 0) ? ~slow_clk : slow_clk;
+end
+endmodule

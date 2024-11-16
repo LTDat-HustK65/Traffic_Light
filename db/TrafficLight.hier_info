@@ -1,0 +1,119 @@
+|TrafficLight
+clk => clk.IN1
+reset => ~NO_FANOUT~
+red <= HienThiDen:U3_hien_thi_den.red
+yellow <= HienThiDen:U3_hien_thi_den.yellow
+green <= HienThiDen:U3_hien_thi_den.green
+led0[0] <= HienThiSo:U4_hien_thi_so.led0
+led0[1] <= HienThiSo:U4_hien_thi_so.led0
+led0[2] <= HienThiSo:U4_hien_thi_so.led0
+led0[3] <= HienThiSo:U4_hien_thi_so.led0
+led0[4] <= HienThiSo:U4_hien_thi_so.led0
+led0[5] <= HienThiSo:U4_hien_thi_so.led0
+led0[6] <= HienThiSo:U4_hien_thi_so.led0
+led0[7] <= HienThiSo:U4_hien_thi_so.led0
+led1[0] <= HienThiSo:U4_hien_thi_so.led1
+led1[1] <= HienThiSo:U4_hien_thi_so.led1
+led1[2] <= HienThiSo:U4_hien_thi_so.led1
+led1[3] <= HienThiSo:U4_hien_thi_so.led1
+led1[4] <= HienThiSo:U4_hien_thi_so.led1
+led1[5] <= HienThiSo:U4_hien_thi_so.led1
+led1[6] <= HienThiSo:U4_hien_thi_so.led1
+led1[7] <= HienThiSo:U4_hien_thi_so.led1
+
+
+|TrafficLight|ChiaTan:U1_chia_tan
+clk => slow_clk~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk => counter[11].CLK
+clk => counter[12].CLK
+clk => counter[13].CLK
+clk => counter[14].CLK
+clk => counter[15].CLK
+clk => counter[16].CLK
+clk => counter[17].CLK
+clk => counter[18].CLK
+clk => counter[19].CLK
+clk => counter[20].CLK
+clk => counter[21].CLK
+clk => counter[22].CLK
+clk => counter[23].CLK
+clk => counter[24].CLK
+clk => counter[25].CLK
+slow_clk <= slow_clk~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TrafficLight|DemVaChuyenDen:U2_dem_nguoc_va_chuyen_den
+clk => state[0]~reg0.CLK
+clk => state[1]~reg0.CLK
+clk => time_left[0]~reg0.CLK
+clk => time_left[1]~reg0.CLK
+clk => time_left[2]~reg0.CLK
+clk => time_left[3]~reg0.CLK
+clk => time_left[4]~reg0.CLK
+clk => time_left[5]~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+state[0] <= state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[1] <= state[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_left[0] <= time_left[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_left[1] <= time_left[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_left[2] <= time_left[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_left[3] <= time_left[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_left[4] <= time_left[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+time_left[5] <= time_left[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TrafficLight|HienThiDen:U3_hien_thi_den
+state[0] => Decoder0.IN1
+state[1] => Decoder0.IN0
+red <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+yellow <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+green <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|TrafficLight|HienThiSo:U4_hien_thi_so
+num[0] => Div0.IN9
+num[0] => Mod0.IN9
+num[1] => Div0.IN8
+num[1] => Mod0.IN8
+num[2] => Div0.IN7
+num[2] => Mod0.IN7
+num[3] => Div0.IN6
+num[3] => Mod0.IN6
+num[4] => Div0.IN5
+num[4] => Mod0.IN5
+num[5] => Div0.IN4
+num[5] => Mod0.IN4
+led0[0] <= WideOr7.DB_MAX_OUTPUT_PORT_TYPE
+led0[1] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+led0[2] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+led0[3] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+led0[4] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+led0[5] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+led0[6] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+led0[7] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+led1[0] <= WideOr15.DB_MAX_OUTPUT_PORT_TYPE
+led1[1] <= WideOr14.DB_MAX_OUTPUT_PORT_TYPE
+led1[2] <= WideOr13.DB_MAX_OUTPUT_PORT_TYPE
+led1[3] <= WideOr12.DB_MAX_OUTPUT_PORT_TYPE
+led1[4] <= WideOr11.DB_MAX_OUTPUT_PORT_TYPE
+led1[5] <= WideOr10.DB_MAX_OUTPUT_PORT_TYPE
+led1[6] <= WideOr9.DB_MAX_OUTPUT_PORT_TYPE
+led1[7] <= WideOr8.DB_MAX_OUTPUT_PORT_TYPE
+
+
